@@ -6,7 +6,7 @@
 <style>
     body {
         margin: 10px 10px;
-        height: 100vh; /* Ensure body takes full viewport height */
+        height: 100vh;
         overflow: hidden;
         position: relative;
         background-color: #92FFEC90;
@@ -23,8 +23,8 @@
         height: 100%;
         background-image: url('https://dieterholz.github.io/StaticResources/mountainpictures/9-1.jpg');
         background-size: cover; /* Ensures the image covers the entire background */
-        background-position: center; /* Centers the image */
-        background-repeat: no-repeat; /* Prevents the image from repeating */
+        background-position: center;
+        background-repeat: no-repeat;
 
         /* Applying filter */
         filter: saturate(0%) opacity(35%) blur(2px); /* Example filter */
@@ -45,13 +45,13 @@
         opacity: 50%;
         color: gray;
         overflow-y: scroll;
-        /* Hide scrollbar for IE, Edge and Firefox */
+        /* Hide scrollbar for IE, Edge and Firefox (taken from Stackoverflow) */
         -ms-overflow-style: none;
         scrollbar-width: none;
         font-weight: bold;
     }
 
-    /* Hide scrollbar for Chrome, Safari and Opera */
+    /* Hide scrollbar for Chrome, Safari and Opera (taken from Stackoverflow) */
     #mountainsList::-webkit-scrollbar {
         display: none;
     }
@@ -103,6 +103,7 @@
         object-fit: cover;
     }
 
+    /* Taken inspiration from the internet */
     @keyframes kenburns {
         0%,
         100% {
@@ -161,7 +162,7 @@
       mountains.map(m => {
           const me = document.createElement('div');
           const text = document.createElement('span');
-          text.innerText = m.NAME;
+          text.innerText = m.NAME; /* use textContent */
           me.onclick = () => selectMountain(m.ID);
           me.append(text);
           return me;
@@ -187,10 +188,10 @@
               const col = headers[i];
               const boldLabel = document.createElement('b');
               const labelContent = document.createElement('p');
-              labelContent.innerText = col;
+              labelContent.innerText = col; /* use textContent */
               boldLabel.append(labelContent);
               const value = document.createElement('p');
-              value.innerText = selectedMountain[col];
+              value.innerText = selectedMountain[col]; /* use textContent */
               mountainInfo.append(boldLabel);
               mountainInfo.append(value);
           }
